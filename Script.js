@@ -287,6 +287,28 @@ function keyUpHandler(e) {
         e.view.event.preventDefault();
     }
 }
+
+
+function touchStartHandler(e){
+    if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchcancel'){
+        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        x = touch.pageX;
+        y = touch.pageY;
+        var message=" "+x+" "+ y
+        document.getElementById("touchTest").innerHTML=message
+    }
+}
+
+function touchEndHandler(e){
+    if(e.type == 'touchend'){
+        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        x = touch.pageX;
+        y = touch.pageY;
+        var message=" "+x+" "+ y
+        document.getElementById("touchTest2").innerHTML=message
+    }
+}
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
-
+document.addEventListener("touchstart", touchStartHandler, false);
+document.addEventListener("touchend", touchEndHandler, false);
