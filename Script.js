@@ -291,6 +291,7 @@ function keyUpHandler(e) {
 
 function touchStartHandler(e){
     if(e.type == 'touchstart' ){
+        e.view.event.preventDefault();
         var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
         var touch = evt.touches[0] || evt.changedTouches[0];
         x = touch.pageX.toFixed(0);
@@ -302,6 +303,7 @@ function touchStartHandler(e){
 
 function touchEndHandler(e){
     if(e.type == 'touchend'){
+        e.view.event.preventDefault();
         var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
         var touch = evt.touches[0] || evt.changedTouches[0];
         x = touch.pageX.toFixed(0);
@@ -315,6 +317,7 @@ function touchEndHandler(e){
 
 function touchMoveHandler(e){
     if(e.type == 'touchmove'){
+        e.view.event.preventDefault();
         var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
         var touch = evt.touches[0] || evt.changedTouches[0];
         x = touch.pageX.toFixed(0);
