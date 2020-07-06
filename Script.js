@@ -317,7 +317,6 @@ function touchEndHandler(e){
 
 function touchMoveHandler(e){
     if(e.type == 'touchmove'){
-        e.view.event.preventDefault();
         var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
         var touch = evt.touches[0] || evt.changedTouches[0];
         x = touch.pageX.toFixed(0);
@@ -328,6 +327,6 @@ function touchMoveHandler(e){
 }
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
-document.addEventListener("touchstart", touchStartHandler, false);
-document.addEventListener("touchend", touchEndHandler, false);
-document.addEventListener("touchmove", touchMoveHandler, false);
+document.addEventListener("touchstart", touchStartHandler, function(e){ e.preventDefault(); });
+document.addEventListener("touchend", touchEndHandler, function(e){ e.preventDefault(); });
+document.addEventListener("touchmove", touchMoveHandler, function(e){ e.preventDefault(); });
