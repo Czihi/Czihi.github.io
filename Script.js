@@ -69,6 +69,7 @@ function topscore(){
 
 button.onclick=function (){
     var lnick = window.prompt("Podaj nick");
+    window.addEventListener("scroll",scrollHandler,false)
     var lspeed = 5
     var laddSquareFrequency = 30
     var lcountDownFrequency = 15
@@ -242,7 +243,7 @@ function draw() {
         globalID = requestAnimationFrame(draw);
     }else{
         cancelAnimationFrame(draw);
-
+        window.removeEventListener("scroll",scrollHandler,false)
     }
 }
 
@@ -291,7 +292,6 @@ function keyUpHandler(e) {
 
 function touchStartHandler(e){
     if(e.type == 'touchstart' ){
-        e.view.event.preventDefault();
         var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
         var touch = evt.touches[0] || evt.changedTouches[0];
         x = touch.pageX.toFixed(0);
@@ -303,7 +303,6 @@ function touchStartHandler(e){
 
 function touchEndHandler(e){
     if(e.type == 'touchend'){
-        e.view.event.preventDefault();
         var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
         var touch = evt.touches[0] || evt.changedTouches[0];
         x = touch.pageX.toFixed(0);
@@ -325,8 +324,12 @@ function touchMoveHandler(e){
         document.getElementById("touchTest").innerHTML=message
     }
 }
+
+function scrollHandler(){
+        window.scrollTo(0,0)
+}
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
-document.addEventListener("touchstart", touchStartHandler, function(e){ e.preventDefault(); });
-document.addEventListener("touchend", touchEndHandler, function(e){ e.preventDefault(); });
-document.addEventListener("touchmove", touchMoveHandler, function(e){ e.preventDefault(); });
+document.addEventListener("touchstart", touchStartHandler, false);
+document.addEventListener("touchend", touchEndHandler, false);
+document.addEventListener("touchmove", touchMoveHandler, false);
