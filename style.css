@@ -19,6 +19,7 @@ canvas {
     max-height: 150px;
     margin-right: 10%;
     float:left;
+    pointer-events: none;
 }
 .group {
 }
