@@ -290,10 +290,11 @@ function keyUpHandler(e) {
 
 
 function touchStartHandler(e){
-    if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchcancel'){
-        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-        x = touch.pageX;
-        y = touch.pageY;
+    if(e.type == 'touchstart' ){
+        var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+        var touch = evt.touches[0] || evt.changedTouches[0];
+        x = touch.pageX.toFixed(0);
+        y = touch.pageY.toFixed(0);
         var message=" "+x+" "+ y
         document.getElementById("touchTest").innerHTML=message
     }
@@ -301,14 +302,29 @@ function touchStartHandler(e){
 
 function touchEndHandler(e){
     if(e.type == 'touchend'){
-        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-        x = touch.pageX;
-        y = touch.pageY;
+        var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+        var touch = evt.touches[0] || evt.changedTouches[0];
+        x = touch.pageX.toFixed(0);
+        y = touch.pageY.toFixed(0);
         var message=" "+x+" "+ y
-        document.getElementById("touchTest2").innerHTML=message
+        document.getElementById("touchTest").innerHTML=message
+    }
+}
+
+
+
+function touchMoveHandler(e){
+    if(e.type == 'touchmove'){
+        var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+        var touch = evt.touches[0] || evt.changedTouches[0];
+        x = touch.pageX.toFixed(0);
+        y = touch.pageY.toFixed(0);
+        var message=" "+x+" "+ y
+        document.getElementById("touchTest").innerHTML=message
     }
 }
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("touchstart", touchStartHandler, false);
 document.addEventListener("touchend", touchEndHandler, false);
+document.addEventListener("touchmove", touchMoveHandler, false);
