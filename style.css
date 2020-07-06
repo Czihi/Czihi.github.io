@@ -4,13 +4,21 @@
 canvas {
     background: #eee;
     display: block;
-    margin: auto;
+    float:left;
 }
 .controls{
     display: table;
     margin: auto;
 }
 .gamedata{
-    max-width: 25%;
+    max-width: 50%;
     margin:auto;
+}
+.controler{
+    max-width: 150px;
+    max-height: 150px;
+    margin-right: 10%;
+    float:left;
+}
+.group {
 }
